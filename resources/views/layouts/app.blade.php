@@ -6,8 +6,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/public/img/icon.png') }}" rel="icon">
-    <link href="{{ asset('assets/public/img/icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/public/img/logo.jpeg') }}" rel="icon">
+    <link href="{{ asset('assets/public/img/logo.jpeg') }}" rel="apple-touch-icon">
     @extends('layouts.css')
 </head>
 
@@ -16,8 +16,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="{{ route('public.home') }}" class="logo d-flex align-items-center me-auto" style="text-decoration: none;">
-                <img src="{{ asset('assets/public/img/icon.png') }}" class="img-fluid animated" alt="" style="width: 70px; height: 200px;">
-                <h1 class="sitename" style="font-size: 15px;">International <br>Ecsis <br>Association</h1>
+                <img src="{{ asset('assets/public/img/logo-esar-new.png') }}" class="img-fluid animated" alt="" style="width: 150px; height:200px">
             </a>
 
             <nav id="navmenu" class="navmenu">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\public;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Trainings;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,10 +21,7 @@ class HomeController extends Controller
         return view('public.home.editor');
     }
 
-    public function training()
-    {
-        return view('public.home.training');
-    }
+
 
     public function digitalservice()
     {

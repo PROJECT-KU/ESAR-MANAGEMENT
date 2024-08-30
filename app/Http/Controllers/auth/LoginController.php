@@ -17,20 +17,33 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
-        if (Auth::attempt($credentials)) {
-            // Authentication passed, redirect to intended route
-            return redirect()->intended('dashboard');
+        // Check if the username exists in the database
+        $userExists = DB::table('users')->where('username', $credentials['username'])->exists();
+
+        if (!$userExists) {
+            // Username does not exist, return with SweetAlert error
+            return redirect()->route('auth.admin')->with('errorbelumterdaftar', 'Account not found. Please register first.');
         }
 
-        // Authentication failed, redirect back to login with error
-        return redirect()->route('login')->withErrors('Login failed, please check your credentials.');
+        // Attempt to authenticate the user
+        if (Auth::attempt($credentials)) {
+            // Authentication passed, redirect to Filament dashboard
+            return redirect()->route('auth.view.dashboard');
+        }
+
+        // Authentication failed, return with SweetAlert error
+        return redirect()->route('auth.admin')->with('errorakun', 'Incorrect username or password.');
     }
+
+
 
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login');
+
+        // Redirect to the auth.admin route after logout
+        return redirect()->route('auth.admin')->with('logout', 'You have been logged out successfully.');
     }
 }
